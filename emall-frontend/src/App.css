@@ -2,37 +2,39 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  font-size: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-image: url("https://cottagelife.com/wp-content/uploads/2018/06/shutterstock_564148111-1200x800.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.8rem;
+  line-height: 1;
+  font-weight: 400;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.item {
+  background-color: #000a;
+  margin: 2em;
+  padding: 2em;
+  border-radius: 20px;
+  transition: 0.5s color;
 }
 
-.App-link {
-  color: #61dafb;
+.image {
+  width: 700px;
+  height: 500px;
+  position: center;
+  /* display: flex; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.item:hover {
+  color: peachpuff;
 }

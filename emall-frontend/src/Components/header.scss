@@ -1,0 +1,29 @@
+
+
+*, ::before, ::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.header {
+    height: 6.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.navbar {
+    text-align: left;
+    top: 0;
+    left: 0;
+    width: 100vw;
+}
+
+a {
+    text-decoration: none;
+}
+
+a, a:hover{
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
