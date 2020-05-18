@@ -3,10 +3,10 @@ import ItemContainer from './ItemContainer'
 
 export default class HomeView extends Component{
     render(){
-        const {items, currentUser} = this.props
+        const {items, currentUser, search} = this.props
         return(
             <div>
-                <ItemContainer items={items} currentUser={currentUser}/>
+                <ItemContainer items={search? search : items} currentUser={currentUser} delItem={this.props.delItem} handleEdit={this.props.handleEdit}/>
             </div>
         )
     }

@@ -1,13 +1,15 @@
 import React from 'react'
 import { withRouter } from "react-router-dom";
+import '../App.css'
 
 class CreateAccount extends React.Component{
     state = {
-        name: '',
         username: '',
         password: '',
         confirmation: '',
         email: '',
+        address: '',
+        profileImage: ''
     }
 
     handleChange = (e)=>{
@@ -18,7 +20,7 @@ class CreateAccount extends React.Component{
     handleSubmit = (e)=>{
         e.preventDefault();
         // console.log(this.state)
-        let {name, username, password, confirmation, email} = this.state;
+        let {username, password, confirmation, email, address, profileImage} = this.state;
         if(password === confirmation){
             fetch('http://localhost:3000/users',{
                 method: 'POST',
@@ -27,15 +29,16 @@ class CreateAccount extends React.Component{
                     Accept:  'application/json'
                 },
                 body: JSON.stringify({
-                    name: name,
                     username: username,
-                    email: email,
                     password: password,
+                    email: email,
+                    address: address,
+                    profileImage: profileImage
                 })
             })
             .then(res=>res.json())
             .then(data=> this.props.createUser(data))
-            this.setState({name: '', username: '', password: '', confirmation: '', email: ''})
+            this.setState({username: '', password: '', confirmation: '', email: '',address: '', profileImage: ''})
             this.props.history.push('/home')
         }
         else{
@@ -48,11 +51,6 @@ class CreateAccount extends React.Component{
         return(
             <form id="account-create" onSubmit={this.handleSubmit}>
                 <h1>Create Account</h1>
-                <label>
-                    Name:
-                    <input name="name" type="text" value={this.state.name} onChange={this.handleChange}/>
-                </label>
-                <br/>
                 <br/>
                 <label>
                     Username:
@@ -75,6 +73,18 @@ class CreateAccount extends React.Component{
                 <label>
                     Email:
                     <input name="email" type="text" value={this.state.email} onChange={this.handleChange}/>
+                </label>
+                <br/>
+                <br/>
+                <label>
+                    Address:
+                    <input name="address" type="text" value={this.state.address} onChange={this.handleChange}/>
+                </label>
+                <br/>
+                <br/>
+                <label>
+                    Profile Image:
+                    <input name="profileImage" type="text" value={this.state.profileImage} onChange={this.handleChange}/>
                 </label>
                 <br/>
                 <br/>

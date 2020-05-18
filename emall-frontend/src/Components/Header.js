@@ -13,7 +13,7 @@ export default class Header extends React.Component{
                     <Link to="/home"><button>Home</button></Link>
                     <input placeholder="Enter Item to search." onChange={handleSearchChange} value={search}/>
                     <NavLink to="/signup"><button>Sign Up</button></NavLink>
-                    <Link to="/postform"> {currentUser && <button>Create an Item</button>} </Link>
+                    <Link to="/itemform"> {currentUser && <button>Add an Item</button>} </Link>
                 </div>
             </header>
         )

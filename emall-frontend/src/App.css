@@ -4,10 +4,11 @@
 
 html {
   font-size: 10px;
+  color: peachpuff;
 }
 
 body {
-  background-image: url("https://cottagelife.com/wp-content/uploads/2018/06/shutterstock_564148111-1200x800.jpg");
+  background-image: url("https://images.unsplash.com/photo-1541436293327-8f104af135eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -36,5 +37,9 @@ body {
 }
 
 .item:hover {
-  color: peachpuff;
+  color: goldenrod;
 }
+
+/* #account-create {
+  text-align: right;
+} */
