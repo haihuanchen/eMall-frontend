@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+// import '../App.css';
 
 const itemUrl = 'http://localhost:3000/items'
 
@@ -20,7 +21,7 @@ export default class ItemCard extends Component{
     }
     render(){
         const {id, title, description, price, quantity, category, image, condition} = this.props.item
-
+        const {handleCart, handleEdit} = this.props
         return(
             <div className="item">
                 <h3 onClick={this.handleClick}>{title}</h3>
@@ -32,8 +33,8 @@ export default class ItemCard extends Component{
                         <p> Quantity: {quantity}</p>
                         <p> Category: {category}</p>
                         <p> Condition: {condition}</p>
-                        <button> Add to Shopping Cart</button><br/><br/>
-                        <button onClick={()=> this.props.handleEdit(this.props.item)}>Edit this Item</button><br/><br/>
+                        <button onClick={()=> handleCart(this.props.item)}> Add to Shopping Cart</button><br/><br/>
+                        <button onClick={()=> handleEdit(this.props.item)}>Edit this Item</button><br/><br/>
                         <button onClick={()=>this.handleDel(id)}> Delete this Item</button>
                     </div>
                     }  

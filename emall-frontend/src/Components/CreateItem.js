@@ -25,7 +25,7 @@ class CreateItem extends React.Component{
         // console.log(this.state)
         let {title, description, price, quantity, category, image, condition} = this.state;
         if(this.props.currentItem.id){
-            console.log("inside edit form", this.props.currentItem.title)
+            // console.log("inside edit form", this.props.currentItem.title)
             fetch(`${itemUrl}/${this.props.currentItem.id}`,{
                 method: 'PATCH',
                 headers: {

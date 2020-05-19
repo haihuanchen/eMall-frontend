@@ -4,6 +4,7 @@ import HomeView from './Containers/HomeView'
 import CreateAccount from './Components/CreateAccount'
 import Header from './Components/Header'
 import CreateItem from './Components/CreateItem'
+import ShoppingCart from './Components/ShoppingCart'
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 const userUrl = 'http://localhost:3000/users'
@@ -24,7 +25,9 @@ class App extends Component {
     },
     targetedReviews: [],
     search: '',
-    currentItem: {}
+    currentItem: {},
+    shoppingCart: [],
+    cartTotal: 0
   }
 
   componentDidMount(){
@@ -37,11 +40,12 @@ class App extends Component {
       .then(data => this.setState({itemIndex: data}))
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if (prevState.userIndex !== this.state.userIndex){
-      this.state.itemIndex.sort((a,b) => a.id < b.id ? 0: -1)
-    }
-  }
+  // componentDidUpdate(prevProps, prevState){
+  //   let sortedItems = this.state.itemIndex.sort((a,b) => a.id - b.id)
+  //   if (prevState.userIndex !== this.state.userIndex){
+  //     this.setState({itemIndex: sortedItems})
+  //   }
+  // }
 
   handleSearchChange = (e) => {
     this.setState({search: e.target.value})
@@ -70,18 +74,30 @@ class App extends Component {
     this.setState({itemIndex: updatedItems, currentItem: {} })
   }
 
+  handleCart = (item) => {
+    let alreadyInCart = this.state.shoppingCart.find(cartItem => cartItem.id === item.id)
+    if(this.state.currentUser.id === item.id || alreadyInCart){ //buyer id === seller id or in shopping cart
+      alert('Already in your shopping cart!')
+    }
+    else{
+      this.setState({shoppingCart: [...this.state.shoppingCart, item], cartTotal: Math.round((this.state.cartTotal + item.price)*100)/100})
+    }
+  }
+
   render(){
-    const {itemIndex, currentUser, search, currentItem} = this.state
+    const {itemIndex, currentUser, search, currentItem,shoppingCart, cartTotal} = this.state
+    // let sortedItems = this.state.itemIndex.sort((a,b) => a.id - b.id)
     let searchedItems = itemIndex.filter(item => item.description.toLowerCase().includes(search.toLocaleLowerCase()))
-    // console.log(itemIndex)
+    // console.log(shoppingCart, cartTotal)
     return (
       <div className="App">
         <Header search={search} handleSearchChange={this.handleSearchChange} currentUser={currentUser.id}/>
         <h1> Welcome to eMall {currentUser.username}, where your dreams become reality!</h1>
         <Switch>
-          <Route exact path="/home" render = {()=> <HomeView items={itemIndex} currentUser={currentUser} search={searchedItems} delItem={this.delItem} handleEdit={this.handleEdit}/>} />
+          <Route exact path="/home" render = {()=> <HomeView items={itemIndex} currentUser={currentUser} search={searchedItems} delItem={this.delItem} handleEdit={this.handleEdit} handleCart={this.handleCart}/>} />
           <Route path="/signup" render={()=> <CreateAccount createUser={this.createUser} {...this.props}/>} />
           <Route path="/itemform" render={()=> <CreateItem sellerId={currentUser.id} addItem={this.addItem} currentItem={currentItem} editItem={this.editItem} {...this.props}/>} />
+          <Route path="/shoppingcart" render={()=> <ShoppingCart buyerId={currentUser.id} cart={shoppingCart} cartTotal={cartTotal} {...this.props}/>} />
         </Switch>
       </div>
     )

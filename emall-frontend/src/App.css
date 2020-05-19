@@ -30,7 +30,7 @@ body {
 }
 
 .image {
-  width: 700px;
+  width: 600px;
   height: 500px;
   position: center;
   /* display: flex; */
@@ -43,3 +43,13 @@ body {
 /* #account-create {
   text-align: right;
 } */
+.cartImage {
+  width: 200px;
+  height: 200px;
+  position: center;
+  /* display: flex; */
+}
+
+.total {
+  color: green;
+}

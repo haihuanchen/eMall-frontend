@@ -6,7 +6,7 @@ export default class HomeView extends Component{
         const {items, currentUser, search} = this.props
         return(
             <div>
-                <ItemContainer items={search? search : items} currentUser={currentUser} delItem={this.props.delItem} handleEdit={this.props.handleEdit}/>
+                <ItemContainer items={search? search : items} currentUser={currentUser} delItem={this.props.delItem} handleEdit={this.props.handleEdit} handleCart={this.props.handleCart}/>
             </div>
         )
     }
