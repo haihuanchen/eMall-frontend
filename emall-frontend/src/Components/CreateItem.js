@@ -77,54 +77,31 @@ class CreateItem extends React.Component{
         const {title, description, price, quantity, category, image, condition} = this.state
         return(
             <form onSubmit={this.handleSubmit}>
-            <h1>{this.props.currentItem.title ? "Edit this Item" : "Add a new Item"}</h1>
-            <br/>
+            <h1>{this.props.currentItem.title ? "Edit this Item" : "Add a new Item"}</h1><br/>
             <label>
-                Title:
-                <input name="title" type="text" value={title} onChange={this.handleChange}/>
-            </label>
-            <br/>
-            <br/>
+                Title: <input name="title" type="text" value={title} onChange={this.handleChange}/>
+            </label><br/><br/>
             <label>
-                Description:
-                <input name="description" type="text" value={description} onChange={this.handleChange}/>
-            </label>
-            <br/>
-            <br/>
+                Description: <input name="description" type="text" value={description} onChange={this.handleChange}/>
+            </label><br/><br/>
             <label>
-                Price:
-                <input name="price" type="float" value={price} onChange={this.handleChange}/>
-            </label>
-            <br/>
-            <br/>
+                Price: <input name="price" type="float" value={price} onChange={this.handleChange}/>
+            </label><br/><br/>
             <label>
-                Quantity:
-                <input name="quantity" type="integer" value={quantity} onChange={this.handleChange}/>
-            </label>
-            <br/>
-            <br/>
+                Quantity: <input name="quantity" type="integer" value={quantity} onChange={this.handleChange}/>
+            </label><br/><br/>
             <label>
-                Category:
-                <input name="category" type="text" value={category} onChange={this.handleChange}/>
-            </label>
-            <br/>
-            <br/>
+                Category: <input name="category" type="text" value={category} onChange={this.handleChange}/>
+            </label><br/><br/>
             <label>
-                Item Image:
-                <input name="image" type="text" value={image} onChange={this.handleChange}/>
-            </label>
-            <br/>
-            <br/>
+                Item Image: <input name="image" type="text" value={image} onChange={this.handleChange}/>
+            </label><br/><br/>
             <label>
-                Item Condition:
-                <input name="condition" type="text" value={condition} onChange={this.handleChange}/>
-            </label>
-            <br/>
-            <br/>
+                Item Condition: <input name="condition" type="text" value={condition} onChange={this.handleChange}/>
+            </label><br/><br/>
             <input type="submit" value={this.props.currentItem.title ? "Edit this Item" : "Add Item"} />
         </form>
         )
     }
 }
-
 export default withRouter(CreateItem)

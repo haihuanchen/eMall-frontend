@@ -40,13 +40,6 @@ class App extends Component {
       .then(data => this.setState({itemIndex: data}))
   }
 
-  // componentDidUpdate(prevProps, prevState){
-  //   let sortedItems = this.state.itemIndex.sort((a,b) => a.id - b.id)
-  //   if (prevState.userIndex !== this.state.userIndex){
-  //     this.setState({itemIndex: sortedItems})
-  //   }
-  // }
-
   handleSearchChange = (e) => {
     this.setState({search: e.target.value})
   }
@@ -84,11 +77,16 @@ class App extends Component {
     }
   }
 
+  cartItemDel = (item) => {
+    let filteredCartItems = this.state.shoppingCart.filter(cartItem => cartItem.id !== item.id)
+    this.setState({shoppingCart: filteredCartItems})
+  }
+
   render(){
     const {itemIndex, currentUser, search, currentItem,shoppingCart, cartTotal} = this.state
     // let sortedItems = this.state.itemIndex.sort((a,b) => a.id - b.id)
     let searchedItems = itemIndex.filter(item => item.description.toLowerCase().includes(search.toLocaleLowerCase()))
-    // console.log(shoppingCart, cartTotal)
+    console.log(shoppingCart)
     return (
       <div className="App">
         <Header search={search} handleSearchChange={this.handleSearchChange} currentUser={currentUser.id}/>
@@ -97,7 +95,7 @@ class App extends Component {
           <Route exact path="/home" render = {()=> <HomeView items={itemIndex} currentUser={currentUser} search={searchedItems} delItem={this.delItem} handleEdit={this.handleEdit} handleCart={this.handleCart}/>} />
           <Route path="/signup" render={()=> <CreateAccount createUser={this.createUser} {...this.props}/>} />
           <Route path="/itemform" render={()=> <CreateItem sellerId={currentUser.id} addItem={this.addItem} currentItem={currentItem} editItem={this.editItem} {...this.props}/>} />
-          <Route path="/shoppingcart" render={()=> <ShoppingCart buyerId={currentUser.id} cart={shoppingCart} cartTotal={cartTotal} {...this.props}/>} />
+          <Route path="/shoppingcart" render={()=> <ShoppingCart buyerId={currentUser.id} cart={shoppingCart} cartTotal={cartTotal} cartItemDel={this.cartItemDel} {...this.props}/>} />
         </Switch>
       </div>
     )

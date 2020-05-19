@@ -18,6 +18,7 @@ class ShoppingCart extends React.Component{
                         <p> Quantity: {item.quantity}</p>
                         <p> Category: {item.category}</p>
                         <p> Condition: {item.condition}</p>
+                        <button onClick={()=>this.props.cartItemDel(item)}>x</button>
                     </div>     
                 )}  
             </Fragment>
