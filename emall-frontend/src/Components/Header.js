@@ -14,7 +14,9 @@ export default class Header extends React.Component{
                     <input placeholder="Enter Item to search." onChange={handleSearchChange} value={search}/>
                     <NavLink to="/signup"><button>Sign Up</button></NavLink>
                     <Link to="/itemform"> {currentUser && <button>Add an Item</button>} </Link>
-                    <Link to="/shoppingcart"> {currentUser && <button>Shopping Cart</button>} </Link>
+                    <Link to="/shoppingcart"> {currentUser && <button>View Shopping Cart</button>} </Link>
+                    <Link to="/orders"> {currentUser && <button>View Orders</button>} </Link>
+                    
 
                 </div>
             </header>

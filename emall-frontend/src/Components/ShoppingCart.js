@@ -8,7 +8,7 @@ class ShoppingCart extends React.Component{
             <Fragment>
                 <h1>Welcome to Your Shopping Cart</h1>
                 <h3 className='total'>Your Total Amount: ${this.props.cartTotal} </h3>
-                <button>Checkout Shopping Cart</button>
+                <button onClick={this.props.checkoutCart}>Checkout Shopping Cart</button>
                 {this.props.cart.map(item => 
                     <div className='item' key={item.id}>
                         <p>{item.title}</p>
@@ -18,7 +18,7 @@ class ShoppingCart extends React.Component{
                         <p> Quantity: {item.quantity}</p>
                         <p> Category: {item.category}</p>
                         <p> Condition: {item.condition}</p>
-                        <button onClick={()=>this.props.cartItemDel(item)}>x</button>
+                        <button onClick={()=>this.props.cartItemDel(item)}>Remove from Cart</button>
                     </div>     
                 )}  
             </Fragment>
