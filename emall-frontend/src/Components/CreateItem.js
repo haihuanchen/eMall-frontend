@@ -76,19 +76,19 @@ class CreateItem extends React.Component{
         // console.log(this.props.sellerId)
         const {title, description, price, quantity, category, image, condition} = this.state
         return(
-            <form onSubmit={this.handleSubmit}>
+            <form className="item" onSubmit={this.handleSubmit}>
             <h1>{this.props.currentItem.title ? "Edit this Item" : "Add a new Item"}</h1><br/>
             <label>
                 Title: <input name="title" type="text" value={title} onChange={this.handleChange}/>
             </label><br/><br/>
             <label>
-                Description: <input name="description" type="text" value={description} onChange={this.handleChange}/>
+                Description: <input name="description" type="text-area" value={description} onChange={this.handleChange}/>
             </label><br/><br/>
             <label>
                 Price: <input name="price" type="float" value={price} onChange={this.handleChange}/>
             </label><br/><br/>
             <label>
-                Quantity: <input name="quantity" type="integer" value={quantity} onChange={this.handleChange}/>
+                Quantity: <input name="quantity" type="number" value={quantity} onChange={this.handleChange}/>
             </label><br/><br/>
             <label>
                 Category: <input name="category" type="text" value={category} onChange={this.handleChange}/>

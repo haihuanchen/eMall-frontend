@@ -16,8 +16,6 @@ export default class Header extends React.Component{
                     <Link to="/itemform"> {currentUser && <button>Add an Item</button>} </Link>
                     <Link to="/shoppingcart"> {currentUser && <button>View Shopping Cart</button>} </Link>
                     <Link to="/orders"> {currentUser && <button>View Orders</button>} </Link>
-                    
-
                 </div>
             </header>
         )

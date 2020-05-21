@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import ReviewContainer from '../Containers/ReviewContainer'
 // import '../App.css';
+import {Link} from 'react-router-dom';
 
 const itemUrl = 'http://localhost:3000/items'
 
@@ -21,12 +23,12 @@ export default class ItemCard extends Component{
     }
     render(){
         const {id, title, description, price, quantity, category, image, condition} = this.props.item
-        const {handleCart, handleEdit} = this.props
+        const {handleCart, handleEdit, reviews, setCurrentItem, currentItem, delReview} = this.props
         return(
             <div className="item">
-                <h3 onClick={this.handleClick}>{title}</h3>
+                <h3 onClick={()=> {this.handleClick(); setCurrentItem(this.props.item)}} >{title}</h3>
                 <p>{description}</p>
-                <img className='image' onClick={this.handleClick} src= {image} alt= ""/>
+                <img className='image' onClick={()=> {this.handleClick(); setCurrentItem(this.props.item)}} src= {image} alt= ""/>
                     { this.state.toggled &&
                     <div> 
                         <p> ${price}</p>
@@ -35,7 +37,9 @@ export default class ItemCard extends Component{
                         <p> Condition: {condition}</p>
                         <button onClick={()=> handleCart(this.props.item)}> Add to Shopping Cart</button><br/><br/>
                         <button onClick={()=> handleEdit(this.props.item)}>Edit this Item</button><br/><br/>
-                        <button onClick={()=>this.handleDel(id)}> Delete this Item</button>
+                        <button onClick={()=>this.handleDel(id)}> Delete this Item</button><br/><br/>
+                        <Link to="/reviewform"> {currentItem && <button>Add a Review</button>} </Link>
+                        <ReviewContainer reviews={reviews} currentItem={currentItem} delReview={delReview}/><br/>
                     </div>
                     }  
             </div>

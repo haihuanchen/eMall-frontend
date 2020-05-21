@@ -6,17 +6,17 @@ import Header from './Components/Header'
 import CreateItem from './Components/CreateItem'
 import ShoppingCart from './Components/ShoppingCart'
 import Order from './Components/Order'
+import CreateReview from './Components/CreateReview'
 import { Route, Switch, withRouter } from 'react-router-dom';
 
-const userUrl = 'http://localhost:3000/users'
-const itemUrl = 'http://localhost:3000/items'
-const orderUrl = 'http://localhost:3000/orders'
+const baseUrl = 'http://localhost:3000'
 
 class App extends Component {
   state = {
     userIndex: [],
     itemIndex: [],
     orderIndex: [],
+    reviewIndex: [],
     currentUser: {
       id: 26,
       username: "SamChen",
@@ -25,7 +25,6 @@ class App extends Component {
       address: "123 road, New York, NY 10007",
       profileImage: "none"
     },
-    targetedReviews: [],
     search: '',
     currentItem: {},
     shoppingCart: [],
@@ -33,17 +32,21 @@ class App extends Component {
   }
 
   componentDidMount(){
-    fetch(userUrl)
+    fetch(`${baseUrl}/users`)
       .then(res => res.json())
       .then(data => this.setState({userIndex: data}))
     
-    fetch(itemUrl)
+    fetch(`${baseUrl}/items`)
       .then(res => res.json())
       .then(data => this.setState({itemIndex: data}))
     
-    fetch(orderUrl)
+    fetch(`${baseUrl}/orders`)
       .then(res => res.json())
       .then(data => this.setState({orderIndex: data}))
+    
+      fetch(`${baseUrl}/reviews`)
+      .then(res => res.json())
+      .then(data => this.setState({reviewIndex: data}))
   }
 
   handleSearchChange = (e) => {
@@ -68,6 +71,10 @@ class App extends Component {
     this.props.history.push('/itemform')
   }
 
+  setCurrentItem = (item) => {
+    this.setState({currentItem: item})
+  }
+
   editItem = (editItem) => {
     let updatedItems = this.state.itemIndex.map(item => item.id === editItem.id ? editItem : item)
     this.setState({itemIndex: updatedItems, currentItem: {} })
@@ -75,8 +82,11 @@ class App extends Component {
 
   handleCart = (item) => {
     let alreadyInCart = this.state.shoppingCart.find(cartItem => cartItem.id === item.id)
-    if(this.state.currentUser.id === item['user_id'] || alreadyInCart){ //buyer id === seller id or in shopping cart
+    if(alreadyInCart){ //buyer id === seller id or in shopping cart
       alert('Already in your shopping cart!')
+    }
+    else if(this.state.currentUser.id === item['user_id'] ){
+      alert('This item belongs to you!')
     }
     else{
       this.setState({shoppingCart: [...this.state.shoppingCart, item], cartTotal: Math.round((this.state.cartTotal + item.price)*100)/100})
@@ -111,20 +121,60 @@ class App extends Component {
     }
   }
 
+  delOrder = (orderId) => {
+    const filteredOrders = this.state.orderIndex.filter(order => order.id !== orderId)
+    this.setState({orderIndex: filteredOrders})
+  }
+
+  delReview = (reviewId) => {
+    let filteredReviews = this.state.reviewIndex.filter(review => review.id !== reviewId)
+    this.setState({reviewIndex: filteredReviews})
+  }
+
+  addReview = (newReview) => {
+    this.setState({reviewIndex: [...this.state.reviewIndex, newReview]})
+  }
+
   render(){
-    const {itemIndex, currentUser, search, currentItem,shoppingCart, cartTotal, orderIndex} = this.state
+    const {itemIndex, currentUser, search, currentItem, shoppingCart, cartTotal, orderIndex, reviewIndex} = this.state
     let searchedItems = itemIndex.filter(item => item.description.toLowerCase().includes(search.toLocaleLowerCase()))
-    // console.log(this.state.orderIndex)
+    let targetedReviews = reviewIndex.filter(review => review['item_id'] === currentItem.id)
+    // console.log(orderIndex)
     return (
       <div className="App">
         <Header search={search} handleSearchChange={this.handleSearchChange} currentUser={currentUser.id}/>
         <h1> Welcome to eMall {currentUser.username}, where your dreams become reality!</h1>
         <Switch>
-          <Route exact path="/home" render = {()=> <HomeView items={itemIndex} currentUser={currentUser} search={searchedItems} delItem={this.delItem} handleEdit={this.handleEdit} handleCart={this.handleCart}/>} />
+          <Route exact path="/home" render = {()=> <HomeView 
+            items={itemIndex} 
+            currentUser={currentUser} 
+            search={searchedItems} 
+            delItem={this.delItem} 
+            handleEdit={this.handleEdit} 
+            handleCart={this.handleCart}
+            reviews={targetedReviews}
+            setCurrentItem={this.setCurrentItem}
+            currentItem={currentItem.id}
+            delReview={this.delReview}
+          />}/>
           <Route path="/signup" render={()=> <CreateAccount createUser={this.createUser} {...this.props}/>} />
-          <Route path="/itemform" render={()=> <CreateItem sellerId={currentUser.id} addItem={this.addItem} currentItem={currentItem} editItem={this.editItem} {...this.props}/>} />
-          <Route path="/shoppingcart" render={()=> <ShoppingCart buyerId={currentUser.id} cart={shoppingCart} cartTotal={cartTotal} cartItemDel={this.cartItemDel} checkoutCart={this.checkoutCart} {...this.props}/>} />
-          <Route path="/orders" render={()=> <Order buyerId={currentUser.id} orders={orderIndex} {...this.props}/>} />
+          <Route path="/itemform" render={()=> <CreateItem 
+            sellerId={currentUser.id} 
+            addItem={this.addItem} 
+            currentItem={currentItem} 
+            editItem={this.editItem} 
+            {...this.props}
+          />}/>
+          <Route path="/shoppingcart" render={()=> <ShoppingCart 
+            buyerId={currentUser.id} 
+            cart={shoppingCart} 
+            cartTotal={cartTotal} 
+            cartItemDel={this.cartItemDel} 
+            checkoutCart={this.checkoutCart} 
+            {...this.props}
+          />}/>
+          <Route path="/orders" render={()=> <Order buyerId={currentUser.id} orders={orderIndex} delOrder={this.delOrder} {...this.props}/>} />
+          <Route path="/reviewform" render={()=> <CreateReview currentItem={currentItem.id} currentUser={currentUser.id} addReview={this.addReview} {...this.props}/>} />
         </Switch>
       </div>
     )
