@@ -1,5 +1,4 @@
 
-
 *, ::before, ::after {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -12,10 +11,21 @@
 }
 
 .navbar {
+    background-color: gray;
     text-align: left;
     top: 0;
     left: 0;
     width: 100vw;
+    height: 100px;
+}
+
+.logo {
+    height: 50px;
+}
+
+#home-btn{
+    // background-color: red;
+    // height: 50px;
 }
 
 a {

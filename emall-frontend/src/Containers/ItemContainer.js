@@ -4,7 +4,7 @@ import ItemCard from '../Components/ItemCard'
 export default class ItemContainer extends Component{
     render(){
         return(
-            <div> 
+            <div className='container'> 
                 {this.props.items.map(item => <ItemCard 
                     key={item.id} 
                     item={item} 

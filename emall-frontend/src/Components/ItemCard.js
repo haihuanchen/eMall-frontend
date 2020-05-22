@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReviewContainer from '../Containers/ReviewContainer'
-// import '../App.css';
+import '../App.css';
 import {Link} from 'react-router-dom';
 
 const itemUrl = 'http://localhost:3000/items'
@@ -25,10 +25,10 @@ export default class ItemCard extends Component{
         const {id, title, description, price, quantity, category, image, condition} = this.props.item
         const {handleCart, handleEdit, reviews, setCurrentItem, currentItem, delReview} = this.props
         return(
-            <div className="item">
-                <h3 onClick={()=> {this.handleClick(); setCurrentItem(this.props.item)}} >{title}</h3>
+            <div className="item" onClick={()=> {this.handleClick(); setCurrentItem(this.props.item)}} >
+                <h3 >{title}</h3>
                 <p>{description}</p>
-                <img className='image' onClick={()=> {this.handleClick(); setCurrentItem(this.props.item)}} src= {image} alt= ""/>
+                <img className='image' src= {image} alt= ""/>
                     { this.state.toggled &&
                     <div> 
                         <p> ${price}</p>
@@ -41,7 +41,7 @@ export default class ItemCard extends Component{
                         <Link to="/reviewform"> {currentItem && <button>Add a Review</button>} </Link>
                         <ReviewContainer reviews={reviews} currentItem={currentItem} delReview={delReview}/><br/>
                     </div>
-                    }  
+                    }
             </div>
         )
     }

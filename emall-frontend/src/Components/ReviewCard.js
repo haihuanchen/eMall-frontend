@@ -8,7 +8,7 @@ class ReviewCard extends Component{
         <Fragment>
 
             <h5>Title: {title}</h5>
-            <p>Ratings: {rating}</p>
+            <p>Ratings: {rating} <span role='img' aria-label='star'>🌟</span></p>
             <p>{content}</p>
         </Fragment>
         )

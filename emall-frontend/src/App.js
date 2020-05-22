@@ -126,10 +126,10 @@ class App extends Component {
     this.setState({orderIndex: filteredOrders})
   }
 
-  delReview = (reviewId) => {
-    let filteredReviews = this.state.reviewIndex.filter(review => review.id !== reviewId)
-    this.setState({reviewIndex: filteredReviews})
-  }
+  // delReview = (reviewId) => {
+  //   let filteredReviews = this.state.reviewIndex.filter(review => review.id !== reviewId)
+  //   this.setState({reviewIndex: filteredReviews})
+  // }
 
   addReview = (newReview) => {
     this.setState({reviewIndex: [...this.state.reviewIndex, newReview]})

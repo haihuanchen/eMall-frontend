@@ -14,7 +14,7 @@ class ShoppingCart extends React.Component{
                         <p>{item.title}</p>
                         <p>{item.description}</p>
                         <p>${item.price}</p>
-                        <img className='cartImage' src={item.image} alt=''/>
+                        <img className='image' src={item.image} alt=''/>
                         <p> Quantity: {item.quantity}</p>
                         <p> Category: {item.category}</p>
                         <p> Condition: {item.condition}</p>

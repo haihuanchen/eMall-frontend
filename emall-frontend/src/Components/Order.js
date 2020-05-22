@@ -26,7 +26,7 @@ class Order extends React.Component{
                             <p>{item.description}</p>
                             <p>${item.price}</p>
                             <p> Quantity: {item.quantity}</p>
-                            <img className='cartImage' src={item.image} alt=''/><br/><br/>
+                            <img className='image' src={item.image} alt=''/><br/><br/>
                         </div>
                     )
                     })}
