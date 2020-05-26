@@ -97,32 +97,3 @@ class CreateAccount extends React.Component{
 }
 
 export default withRouter(CreateAccount)
-
-/*<form className="form" onSubmit={this.handleSubmit}>
-                <h1>Create Account</h1><br/>   
-                <label>
-                    Username:
-                    <input name="username" type="text" value={this.state.username} onChange={this.handleChange}/>
-                </label><br/><br/>
-                <label>
-                    Password:
-                    <input name="password" type="password" value={this.state.password} onChange={this.handleChange}/>
-                </label><br/><br/>
-                <label>
-                    Confirm Password:
-                    <input name="confirmation" type="password" value={this.state.confirmation} onChange={this.handleChange}/>
-                </label><br/><br/>
-                <label>
-                    Email:
-                    <input name="email" type="text" value={this.state.email} onChange={this.handleChange}/>
-                </label><br/><br/>
-                <label>
-                    Address:
-                    <input name="address" type="text" value={this.state.address} onChange={this.handleChange}/>
-                </label><br/><br/>
-                <label>
-                    Profile Image:
-                    <input name="profileImage" type="text" value={this.state.profileImage} onChange={this.handleChange}/>
-                </label><br/><br/>
-                <input type="submit" value="Submit" />
-            </form>*/

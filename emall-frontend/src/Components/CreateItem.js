@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from "react-router-dom";
 import '../App.css'
+import {Form, Container, Row, Col, Button} from 'react-bootstrap'
 
 const itemUrl = 'http://localhost:3000/items'
 
@@ -76,31 +77,51 @@ class CreateItem extends React.Component{
         // console.log(this.props.sellerId)
         const {title, description, price, quantity, category, image, condition} = this.state
         return(
-            <form className="form" onSubmit={this.handleSubmit}>
-            <h1>{this.props.currentItem.title ? "Edit this Item" : "Add a new Item"}</h1><br/>
-            <label>
-                Title: <input name="title" type="text" value={title} onChange={this.handleChange}/>
-            </label><br/><br/>
-            <label>
-                Description: <input name="description" type="text-area" value={description} onChange={this.handleChange}/>
-            </label><br/><br/>
-            <label>
-                Price: <input name="price" type="float" value={price} onChange={this.handleChange}/>
-            </label><br/><br/>
-            <label>
-                Quantity: <input name="quantity" type="number" value={quantity} onChange={this.handleChange}/>
-            </label><br/><br/>
-            <label>
-                Category: <input name="category" type="text" value={category} onChange={this.handleChange}/>
-            </label><br/><br/>
-            <label>
-                Item Image: <input name="image" type="text" value={image} onChange={this.handleChange}/>
-            </label><br/><br/>
-            <label>
-                Item Condition: <input name="condition" type="text" value={condition} onChange={this.handleChange}/>
-            </label><br/><br/>
-            <input type="submit" value={this.props.currentItem.title ? "Edit this Item" : "Add Item"} />
-        </form>
+            <Container>
+                <Row>
+                    <Col>
+                    <Form onSubmit={this.handleSubmit}>
+                        <h1>{this.props.currentItem.title ? "Edit this Item" : "Add a new Item"}</h1>
+                        <Form.Group >
+                            <Form.Label>Title</Form.Label>
+                            <Form.Control name="title" type="text" value={title} onChange={this.handleChange} placeholder="Enter your product name" />
+                        </Form.Group>
+
+                        <Form.Group>
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control name="description" type="text-area" value={description} onChange={this.handleChange} placeholder="Tell us more about the product" />
+                        </Form.Group>
+
+                        <Form.Group>
+                            <Form.Label>Price</Form.Label>
+                            <Form.Control name="price" type="float" value={price} onChange={this.handleChange} placeholder="Enter the price" />
+                        </Form.Group>
+
+                        <Form.Group>
+                            <Form.Label>Quantity</Form.Label>
+                            <Form.Control name="quantity" type="number" value={quantity} onChange={this.handleChange} placeholder="Enter the quantity" />
+                        </Form.Group>
+
+                        <Form.Group >
+                            <Form.Label>Category</Form.Label>
+                            <Form.Control name="category" type="text" value={category} onChange={this.handleChange} placeholder="Enter product category" />
+                        </Form.Group>
+
+                        <Form.Group >
+                            <Form.Label>Image</Form.Label>
+                            <Form.Control name="image" type="text" value={image} onChange={this.handleChange} placeholder="Enter product image url" />
+                        </Form.Group>
+
+                        <Form.Group >
+                            <Form.Label>Condition</Form.Label>
+                            <Form.Control name="condition" type="text" value={condition} onChange={this.handleChange} placeholder="Enter product condition" />
+                        </Form.Group>
+
+                        <Button variant="primary" type="submit"> Submit</Button>
+                    </Form>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
