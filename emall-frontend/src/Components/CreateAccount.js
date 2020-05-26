@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from "react-router-dom";
 import '../App.css'
+import {Form, Container, Row, Col, Button} from 'react-bootstrap'
 
 class CreateAccount extends React.Component{
     state = {
@@ -49,7 +50,55 @@ class CreateAccount extends React.Component{
     render(){
         // console.log("create account", this.props)
         return(
-            <form className="item" onSubmit={this.handleSubmit}>
+            <Container>
+                <Row>
+                    <Col>
+                    <Form onSubmit={this.handleSubmit}>
+                        <Form.Group >
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control name="username" type="text" value={this.state.username} onChange={this.handleChange} placeholder="Enter your username" />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control name="password" type="password" value={this.state.password} onChange={this.handleChange} placeholder="Enter Password" />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Label>Password Confirmation</Form.Label>
+                            <Form.Control name="confirmation" type="password" value={this.state.confirmation} onChange={this.handleChange} placeholder="Enter Confirmation" />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control name="email" type="email" value={this.state.email} onChange={this.handleChange} placeholder="Enter email" />
+                            <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                            </Form.Text>
+                        </Form.Group>
+
+                        <Form.Group >
+                            <Form.Label>Address</Form.Label>
+                            <Form.Control name="address" type="text" value={this.state.address} onChange={this.handleChange} placeholder="Enter address" />
+                        </Form.Group>
+
+                        <Form.Group >
+                            <Form.Label>Profile Image</Form.Label>
+                            <Form.Control name="profileImage" type="text" value={this.state.profileImage} onChange={this.handleChange} placeholder="Enter image url" />
+                        </Form.Group>
+
+                        <Button variant="primary" type="submit">Add Item</Button>
+                    </Form>
+                    </Col>
+                </Row>
+            </Container>
+        )
+    }
+}
+
+export default withRouter(CreateAccount)
+
+/*<form className="form" onSubmit={this.handleSubmit}>
                 <h1>Create Account</h1><br/>   
                 <label>
                     Username:
@@ -76,9 +125,4 @@ class CreateAccount extends React.Component{
                     <input name="profileImage" type="text" value={this.state.profileImage} onChange={this.handleChange}/>
                 </label><br/><br/>
                 <input type="submit" value="Submit" />
-            </form>
-        )
-    }
-}
-
-export default withRouter(CreateAccount)
+            </form>*/

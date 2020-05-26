@@ -1,15 +1,16 @@
-.App {
+.app{
   text-align: center;
 }
 
 html {
-  font-size: 10px;
-  color: peachpuff;
+  font-size: 15px;
+  color:purple;
 }
 
 body {
-  /* background-color: grey; */
+  background-color:rgb(143, 193, 240);
   /* background-image: url("https://images.unsplash.com/photo-1541436293327-8f104af135eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"); */
+  /* background-image: url("https://www.disruptivestatic.com/wp-content/uploads/2018/06/ecommerce-business-blog-1.jpg"); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -21,8 +22,14 @@ body {
   line-height: 1;
   font-weight: 400;
 }
+
+/* .page-header {
+  color: red;
+} */
+
 @media(min-width:468px){
   .container {
+    text-align: center;
     display: flex;
     align-items: flex-start;
     flex-flow: row wrap;
@@ -33,7 +40,16 @@ body {
 }
 
 .item {
-  background-color: #000a;
+  background-color:lightgray;
+  flex: 1;
+  margin: 2em;
+  padding: 2em;
+  border-radius: 20px;
+  transition: 0.5s color;
+}
+
+.form {
+  background-color:lightgray;
   flex: 1;
   margin: 2em;
   padding: 2em;
@@ -48,7 +64,7 @@ body {
 }
 
 .item:hover {
-  color: goldenrod;
+  color: brown;
 }
 
 #content-area {

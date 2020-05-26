@@ -7,9 +7,9 @@ class ReviewCard extends Component{
         return(
         <Fragment>
 
-            <h5>Title: {title}</h5>
+            <h3>Title: {title}</h3>
             <p>Ratings: {rating} <span role='img' aria-label='star'>🌟</span></p>
-            <p>{content}</p>
+            <p>{content}</p><br/>
         </Fragment>
         )
     }

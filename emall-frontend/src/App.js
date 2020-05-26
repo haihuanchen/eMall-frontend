@@ -8,6 +8,7 @@ import ShoppingCart from './Components/ShoppingCart'
 import Order from './Components/Order'
 import CreateReview from './Components/CreateReview'
 import { Route, Switch, withRouter } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const baseUrl = 'http://localhost:3000'
 
@@ -63,7 +64,7 @@ class App extends Component {
 
   delItem = (itemId) => {
     let filteredItems = this.state.itemIndex.filter(item => item.id !== itemId)
-    this.setState({itemIndex: filteredItems})
+    this.setState({itemIndex: filteredItems, currentItem: {}})
   }
 
   handleEdit = (item) => {
@@ -72,7 +73,11 @@ class App extends Component {
   }
 
   setCurrentItem = (item) => {
-    this.setState({currentItem: item})
+    if(this.state.currentItem.title){
+      this.setState({currentItem: {}})
+    }else{
+      this.setState({currentItem: item})
+    }
   }
 
   editItem = (editItem) => {
@@ -137,13 +142,14 @@ class App extends Component {
 
   render(){
     const {itemIndex, currentUser, search, currentItem, shoppingCart, cartTotal, orderIndex, reviewIndex} = this.state
-    let searchedItems = itemIndex.filter(item => item.description.toLowerCase().includes(search.toLocaleLowerCase()))
+    let searchedItems = itemIndex.filter(item => item.title.toLowerCase().includes(search.toLocaleLowerCase()))
     let targetedReviews = reviewIndex.filter(review => review['item_id'] === currentItem.id)
-    // console.log(orderIndex)
+    // console.log(currentItem)
     return (
-      <div className="App">
-        <Header search={search} handleSearchChange={this.handleSearchChange} currentUser={currentUser.id}/>
-        <h1> Welcome to eMall {currentUser.username}, where your dreams become reality!</h1>
+      <div className="app">
+        <Header search={search} handleSearchChange={this.handleSearchChange} currentUser={currentUser.id} setItem={this.setItem}/>
+
+        <h1 className="page-header"> Welcome to eMall {currentUser.username}, where your dreams become reality!</h1>
         <Switch>
           <Route exact path="/home" render = {()=> <HomeView 
             items={itemIndex} 
