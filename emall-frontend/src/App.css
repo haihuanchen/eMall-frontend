@@ -1,5 +1,6 @@
 .app{
   text-align: center;
+  background-color:rgb(143, 193, 240);
 }
 
 html {
@@ -8,7 +9,6 @@ html {
 }
 
 body {
-  background-color:rgb(143, 193, 240);
   /* background-image: url("https://images.unsplash.com/photo-1541436293327-8f104af135eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"); */
   /* background-image: url("https://www.disruptivestatic.com/wp-content/uploads/2018/06/ecommerce-business-blog-1.jpg"); */
   background-repeat: no-repeat;
@@ -64,7 +64,7 @@ body {
 }
 
 .item:hover {
-  color: brown;
+  color: darkred;
 }
 
 #content-area {
