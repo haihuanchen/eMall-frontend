@@ -87,7 +87,7 @@ class CreateAccount extends React.Component{
                             <Form.Control name="profileImage" type="text" value={this.state.profileImage} onChange={this.handleChange} placeholder="Enter image url" />
                         </Form.Group>
 
-                        <Button variant="primary" type="submit">Add Item</Button>
+                        <Button variant="primary" type="submit"> Submit</Button>
                     </Form>
                     </Col>
                 </Row>

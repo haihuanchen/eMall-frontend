@@ -131,13 +131,8 @@ class App extends Component {
     this.setState({orderIndex: filteredOrders})
   }
 
-  // delReview = (reviewId) => {
-  //   let filteredReviews = this.state.reviewIndex.filter(review => review.id !== reviewId)
-  //   this.setState({reviewIndex: filteredReviews})
-  // }
-
   addReview = (newReview) => {
-    this.setState({reviewIndex: [...this.state.reviewIndex, newReview]})
+    this.setState({reviewIndex: [...this.state.reviewIndex, newReview], })
   }
 
   render(){
@@ -148,8 +143,6 @@ class App extends Component {
     return (
       <div className="app">
         <Header search={search} handleSearchChange={this.handleSearchChange} currentUser={currentUser.id} setItem={this.setItem}/>
-
-        <h1 className="page-header"> Welcome to eMall {currentUser.username}, where your dreams become reality!</h1>
         <Switch>
           <Route exact path="/home" render = {()=> <HomeView 
             items={itemIndex} 

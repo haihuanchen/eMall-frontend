@@ -1,11 +1,11 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import { withRouter } from "react-router-dom";
 import '../App.css';
 
 class ShoppingCart extends React.Component{
     render(){
         return(
-            <Fragment>
+            <div className='container'>
                 <h1>Welcome to Your Shopping Cart</h1>
                 <h3 className='total'>Your Total Amount: ${this.props.cartTotal} </h3>
                 <button onClick={this.props.checkoutCart}>Checkout Shopping Cart</button>
@@ -21,7 +21,7 @@ class ShoppingCart extends React.Component{
                         <button onClick={()=>this.props.cartItemDel(item)}>Remove from Cart</button>
                     </div>     
                 )}  
-            </Fragment>
+            </div>
         )
     }
 }
