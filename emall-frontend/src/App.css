@@ -23,9 +23,12 @@ body {
   font-weight: 400;
 }
 
-/* .page-header {
-  color: red;
-} */
+.page-header {
+  margin: 2rem;
+  padding: 2rem;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 50px;
+}
 
 @media(min-width:468px){
   .container {
@@ -63,7 +66,24 @@ body {
   position: center;
 }
 
-.item:hover {
+/* .item:hover {
+  color: darkred;
+} */
+.card{
+  background-color:white!important;
+  margin: 2em;
+  padding: 2em!important;
+  border-radius: 20px!important;
+}
+
+.btn{
+  border-radius: 10px!important;
+  border-color: black!important;
+  /* background-color: rgba(170, 202, 240, 0.527)!important; */
+}
+
+.card:hover {
+  box-shadow: 5px 10px 20px 1px rgba(0,0,0,0.253)!important;
   color: darkred;
 }
 

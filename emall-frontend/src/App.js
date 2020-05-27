@@ -17,7 +17,7 @@ class App extends Component {
     userIndex: [],
     itemIndex: [],
     orderIndex: [],
-    reviewIndex: [],
+    // reviewIndex: [],
     currentUser: {
       id: 26,
       username: "SamChen",
@@ -44,10 +44,6 @@ class App extends Component {
     fetch(`${baseUrl}/orders`)
       .then(res => res.json())
       .then(data => this.setState({orderIndex: data}))
-    
-      fetch(`${baseUrl}/reviews`)
-      .then(res => res.json())
-      .then(data => this.setState({reviewIndex: data}))
   }
 
   handleSearchChange = (e) => {
@@ -131,14 +127,13 @@ class App extends Component {
     this.setState({orderIndex: filteredOrders})
   }
 
-  addReview = (newReview) => {
-    this.setState({reviewIndex: [...this.state.reviewIndex, newReview], })
-  }
+  // addReview = (newReview) => {
+  //   this.setState({reviewIndex: [...this.state.reviewIndex, newReview]})
+  // }
 
   render(){
-    const {itemIndex, currentUser, search, currentItem, shoppingCart, cartTotal, orderIndex, reviewIndex} = this.state
+    const {itemIndex, currentUser, search, currentItem, shoppingCart, cartTotal, orderIndex} = this.state
     let searchedItems = itemIndex.filter(item => item.title.toLowerCase().includes(search.toLocaleLowerCase()))
-    let targetedReviews = reviewIndex.filter(review => review['item_id'] === currentItem.id)
     // console.log(currentItem)
     return (
       <div className="app">
@@ -151,7 +146,6 @@ class App extends Component {
             delItem={this.delItem} 
             handleEdit={this.handleEdit} 
             handleCart={this.handleCart}
-            reviews={targetedReviews}
             setCurrentItem={this.setCurrentItem}
             currentItem={currentItem.id}
             delReview={this.delReview}

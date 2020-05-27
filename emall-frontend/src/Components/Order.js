@@ -23,11 +23,11 @@ class Order extends React.Component{
                         {order.items.map(item => {
                         return(
                             <div key={item.id}>
+                                <img className='image' src={item.image} alt=''/><br/><br/>
                                 <p>{item.title}</p>
                                 <p>{item.description}</p>
                                 <p>${item.price}</p>
-                                <p> Quantity: {item.quantity}</p>
-                                <img className='image' src={item.image} alt=''/><br/><br/>
+                                <p> Quantity: {item.quantity}</p><br/>
                             </div>
                         )
                         })}

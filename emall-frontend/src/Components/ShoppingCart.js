@@ -11,10 +11,10 @@ class ShoppingCart extends React.Component{
                 <button onClick={this.props.checkoutCart}>Checkout Shopping Cart</button>
                 {this.props.cart.map(item => 
                     <div className='item' key={item.id}>
+                        <img className='image' src={item.image} alt=''/>
                         <p>{item.title}</p>
                         <p>{item.description}</p>
                         <p>${item.price}</p>
-                        <img className='image' src={item.image} alt=''/>
                         <p> Quantity: {item.quantity}</p>
                         <p> Category: {item.category}</p>
                         <p> Condition: {item.condition}</p>

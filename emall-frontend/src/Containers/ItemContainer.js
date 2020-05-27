@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import ItemCard from '../Components/ItemCard'
+import {Container} from 'react-bootstrap'
+// import CardDeck from 'react-bootstrap/CardDeck'
 
 export default class ItemContainer extends Component{
     render(){
         return(
-            <div className='container'> 
+            <Container>
                 {this.props.items.map(item => <ItemCard 
                     key={item.id} 
                     item={item} 
@@ -16,7 +18,7 @@ export default class ItemContainer extends Component{
                     currentItem={this.props.currentItem}
                     delReview={this.props.delReview}
                 />)}
-            </div>
+             </Container>
         )
     }
 }

@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import ReviewContainer from '../Containers/ReviewContainer'
 import '../App.css';
 import {Link} from 'react-router-dom';
+// import {Col} from 'react-bootstrap'
+import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
+import ListGroupItem from 'react-bootstrap/ListGroupItem'
+
 
 const itemUrl = 'http://localhost:3000/items'
 
@@ -25,25 +30,28 @@ export default class ItemCard extends Component{
         const {id, title, description, price, quantity, category, image, condition} = this.props.item
         const {handleCart, handleEdit, reviews, setCurrentItem, currentItem, delReview} = this.props
         return(
-            <div className="item">
-                <h3>{title}</h3>
-                <p>{description}</p>
-                <img className='image' src= {image} alt= ""/><br/><br/>
-                <button onClick={()=> {this.handleClick(); setCurrentItem(this.props.item)}}> {this.state.toggled ? "Less Info" : "More Info"}</button><br/><br/>
-                    { this.state.toggled &&
-                    <div> 
-                        <p> ${price}</p>
-                        <p> Quantity: {quantity}</p>
-                        <p> Category: {category}</p>
-                        <p> Condition: {condition}</p>
-                        <button onClick={()=> handleCart(this.props.item)}> Add to Shopping Cart</button><br/><br/>
-                        <button onClick={()=> handleEdit(this.props.item)}>Edit this Item</button><br/><br/>
-                        <button onClick={()=>this.handleDel(id)}> Delete this Item</button><br/><br/>
-                        <Link to="/reviewform"> {currentItem && <button>Add a Review</button>}</Link><br/><br/>
-                        <ReviewContainer reviews={reviews} currentItem={currentItem} delReview={delReview}/><br/>
-                    </div>
-                    }
-            </div>
+            <Card style={{width: '20rem'}}>
+                <Card.Img variant='top' src= {image} alt= ""/>
+
+                <Card.Body>
+                    <Card.Title>{title}</Card.Title>
+                    <Card.Text>{description}</Card.Text>
+                    <button className='btn' onClick={()=> {this.handleClick(); setCurrentItem(this.props.item)}}> {this.state.toggled ? "Less Info" : "More Info"}</button><br/><br/>
+                </Card.Body>
+
+                { this.state.toggled &&
+                <ListGroup className="list-group-flush"> 
+                    <ListGroupItem> ${price}</ListGroupItem>
+                    <ListGroupItem> Quantity: {quantity}</ListGroupItem>
+                    <ListGroupItem> Category: {category}</ListGroupItem>
+                    <ListGroupItem> Condition: {condition}</ListGroupItem><br/>
+                    <button className='btn' onClick={()=> handleCart(this.props.item)}> Add to Shopping Cart</button><br/>
+                    <button className='btn' onClick={()=> handleEdit(this.props.item)}>Edit this Item</button><br/>
+                    <button className='btn' onClick={()=>this.handleDel(id)}> Delete this Item</button><br/>
+                    <Link to="/reviewform"> {currentItem && <button className='btn'>Add a Review</button>}</Link><br/>
+                    <ReviewContainer reviews={reviews} currentItem={currentItem} delReview={delReview}/><br/>
+                </ListGroup>}
+            </Card>
         )
     }
 }
