@@ -6,7 +6,7 @@ class ShoppingCart extends React.Component{
     render(){
         return(
             <div className='container'>
-                <h1>Welcome to Your Shopping Cart</h1>
+                <h3>Welcome to Your Shopping Cart</h3>
                 <h3 className='total'>Your Total Amount: ${this.props.cartTotal} </h3>
                 <button onClick={this.props.checkoutCart}>Checkout Shopping Cart</button>
                 {this.props.cart.map(item => 
