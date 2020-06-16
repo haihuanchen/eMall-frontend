@@ -41,7 +41,7 @@ As a user, you can …
 
 Future Features yet to be implemented: 
 
-click categories of different items on the Nav Bar (dropdown menu)
+-Click categories of different items on the Nav Bar (dropdown menu)
 
 -User can add items to a wish list (want to buy this item later)
 
