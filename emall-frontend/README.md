@@ -8,6 +8,7 @@ An online eCommerce website to make online shopping(buying & selling) more acces
 
 -Utilized the backend items and allow users to put items in shopping cart and place orders
 
+
 As a user, you can …
 
 -Click signup / login to the account
@@ -35,6 +36,8 @@ As a user, you can …
 -Ceate a review for any item on the Home Page
 
 -Edit or delete their reviews of the item
+
+
 
 Future Features yet to be implemented: 
 
