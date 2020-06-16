@@ -3,6 +3,7 @@ An online eCommerce website to make online shopping(buying & selling) more acces
 -Developed user interface employing React and React Bootstrap for styling  
 -Employed user interface and allow users to post new items
 -Implemented Rails API backend and PostGreSQL database to provide endpoints for users, items and orders
+
 -Utilized the backend items and allow users to put items in shopping cart and place orders
 
 As a user, you can …
