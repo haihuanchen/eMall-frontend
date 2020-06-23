@@ -1,6 +1,14 @@
 # eMall-frontend
 
-An online eCommerce website to make online shopping(buying & selling) more accessible. This project was bootstrapped with [Create React App].
+An online eCommerce website to make online shopping(buying & selling) more accessible. 
+
+Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+You have installed the latest version of Ruby on Rails as back end & React JavaScript as Front End. You have a <Linux/Mac> machine.Windows OS is currently not supported. This project was bootstrapped with Create React App. To start the app, use terminal command "npm start".
+
+
 
 -Developed user interface employing React and React Bootstrap for styling 
 
