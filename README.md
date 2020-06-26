@@ -2,6 +2,8 @@
 
 An online eCommerce website to make online shopping(buying & selling) more accessible. 
 
+Video Demo of the project: https://www.loom.com/share/0aa9764b57464e489cb2f90205f7f139
+
 Prerequisites
 
 Before you begin, ensure you have met the following requirements:
