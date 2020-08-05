@@ -17,16 +17,13 @@ class CreateItem extends React.Component{
     }
 
     handleChange = (e)=>{
-        // console.log([e.target.name], e.target.value)
         this.setState({ [e.target.name]: e.target.value})
     }
 
     handleSubmit = (e)=>{
         e.preventDefault();
-        // console.log(this.state)
         let {title, description, price, quantity, category, image, condition} = this.state;
         if(this.props.currentItem.id){
-            // console.log("inside edit form", this.props.currentItem.title)
             fetch(`${itemUrl}/${this.props.currentItem.id}`,{
                 method: 'PATCH',
                 headers: {
@@ -74,7 +71,6 @@ class CreateItem extends React.Component{
     }
 
     render(){
-        // console.log(this.props.sellerId)
         const {title, description, price, quantity, category, image, condition} = this.state
         return(
             <Container>

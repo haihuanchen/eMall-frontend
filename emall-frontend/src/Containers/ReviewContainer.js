@@ -16,11 +16,10 @@ export default class ReviewContainer extends Component{
     
     render(){
         let targetedReviews = this.state.reviews.filter(review => review['item_id'] === this.props.currentItem)
-        // console.log(this.props.reviews)
         return(
-        <Fragment>
-            {targetedReviews.map(review => <ReviewCard key={review.id} review={review} delReview={this.props.delReview}/>)}
-        </Fragment>
+            <Fragment>
+                {targetedReviews.map(review => <ReviewCard key={review.id} review={review} />)}
+            </Fragment>
         )
     }
 }

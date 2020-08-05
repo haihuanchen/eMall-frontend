@@ -9,8 +9,6 @@ html {
 }
 
 body {
-  /* background-image: url("https://images.unsplash.com/photo-1541436293327-8f104af135eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"); */
-  /* background-image: url("https://www.disruptivestatic.com/wp-content/uploads/2018/06/ecommerce-business-blog-1.jpg"); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -79,7 +77,6 @@ body {
 .btn{
   border-radius: 10px!important;
   border-color: black!important;
-  /* background-color: rgba(170, 202, 240, 0.527)!important; */
 }
 
 .card:hover {

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import ItemCard from '../Components/ItemCard'
 import {Container} from 'react-bootstrap'
-// import CardDeck from 'react-bootstrap/CardDeck'
 
 export default class ItemContainer extends Component{
     render(){
