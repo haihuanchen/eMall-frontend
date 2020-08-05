@@ -33,7 +33,7 @@ class Order extends React.Component{
                         })}
                         <p>Shipping Address: {order.shippingAddress}</p>
                         <h3 className='total'>Your Total Amount: ${order.totalAmount} </h3>
-                        <button onClick={()=>this.handleDel(order.id)}>Delete this Order</button>
+                        <button onClick={()=>this.handleDel(order.id)}>Cancel this Order</button>
                     </div>     
                     )} 
                 </div>

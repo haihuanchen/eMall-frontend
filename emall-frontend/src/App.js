@@ -127,14 +127,14 @@ class App extends Component {
     this.setState({orderIndex: filteredOrders})
   }
 
-  // addReview = (newReview) => {
-  //   this.setState({reviewIndex: [...this.state.reviewIndex, newReview]})
-  // }
+  addReview = (newReview) => {
+    this.setState({reviewIndex: [...this.state.reviewIndex, newReview]})
+  }
 
   render(){
     const {itemIndex, currentUser, search, currentItem, shoppingCart, cartTotal, orderIndex} = this.state
     let searchedItems = itemIndex.filter(item => item.title.toLowerCase().includes(search.toLocaleLowerCase()))
-    // console.log(currentItem)
+    
     return (
       <div className="app">
         <Header search={search} handleSearchChange={this.handleSearchChange} currentUser={currentUser.id} setItem={this.setItem}/>
@@ -167,7 +167,7 @@ class App extends Component {
             {...this.props}
           />}/>
           <Route path="/orders" render={()=> <Order buyerId={currentUser.id} orders={orderIndex} delOrder={this.delOrder} {...this.props}/>} />
-          <Route path="/reviewform" render={()=> <CreateReview currentItem={currentItem.id} currentUser={currentUser.id} addReview={this.addReview} {...this.props}/>} />
+          <Route path="/reviewform" render={()=> <CreateReview currentItem={currentItem.id} currentUser={currentUser.id} setCurrentItem={this.setCurrentItem} {...this.props}/>} />
         </Switch>
       </div>
     )

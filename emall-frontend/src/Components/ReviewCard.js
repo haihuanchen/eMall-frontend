@@ -6,7 +6,6 @@ class ReviewCard extends Component{
         const {title, rating, content} = this.props.review
         return(
         <Fragment>
-
             <h3>Title: {title}</h3>
             <p>Ratings: {rating} <span role='img' aria-label='star'>🌟</span></p>
             <p>{content}</p><br/>

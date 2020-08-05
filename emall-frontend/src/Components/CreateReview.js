@@ -31,12 +31,12 @@ class CreateReview extends Component{
                 item_id: currentItem
             })
         })
-        // .then(res=>res.json())
-        // .then(newReview=> this.props.addReview(newReview))
+        .then(res=>res.json())
+        .then(newReview=> this.props.setCurrentItem(newReview))
         this.setState({title: '', content: '', rating: 1})
         this.props.history.push('/home')
     }
-    
+
     render(){
         const {title, content, rating} = this.state
         return(
